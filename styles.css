@@ -265,7 +265,18 @@ textarea {
     border-radius: 8px;
     margin-bottom: 10px;
     border-left: 4px solid #667eea;
-    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.word-content {
+    flex: 1;
+}
+
+.word-actions {
+    display: flex;
+    gap: 5px;
 }
 
 .word-item h3 {
@@ -276,27 +287,99 @@ textarea {
 
 .word-item p {
     color: #4a5568;
-    margin-bottom: 10px;
+    margin-bottom: 0;
 }
 
+.word-item .edit-btn,
 .word-item .delete-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: #f56565;
-    color: white;
+    background: transparent;
     border: none;
     border-radius: 50%;
     width: 30px;
     height: 30px;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 1;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.word-item .edit-btn {
+    background: #edf2f7;
+    color: #4a5568;
+}
+
+.word-item .edit-btn:hover {
+    background: #e2e8f0;
+    transform: scale(1.1);
+}
+
+.word-item .delete-btn {
+    background: #fed7d7;
+    color: #c53030;
 }
 
 .word-item .delete-btn:hover {
-    background: #e53e3e;
+    background: #feb2b2;
+    transform: scale(1.1);
+}
+
+.word-edit-form {
+    flex: 1;
+}
+
+.word-edit-form .form-group {
+    margin-bottom: 8px;
+}
+
+.word-edit-form input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.word-edit-form input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.word-item .save-btn,
+.word-item .cancel-btn {
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.word-item .save-btn {
+    background: #c6f6d5;
+    color: #276749;
+}
+
+.word-item .save-btn:hover {
+    background: #9ae6b4;
+    transform: scale(1.1);
+}
+
+.word-item .cancel-btn {
+    background: #fed7d7;
+    color: #c53030;
+}
+
+.word-item .cancel-btn:hover {
+    background: #feb2b2;
     transform: scale(1.1);
 }
 

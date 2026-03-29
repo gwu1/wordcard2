@@ -344,6 +344,50 @@ other`;
         this.showNotification('Word deleted');
     }
 
+    startEditWord(id) {
+        const wordItem = document.querySelector(`.word-item[data-id="${id}"]`);
+        const word = this.words.find(w => w.id === id);
+        if (!wordItem || !word) return;
+
+        wordItem.innerHTML = `
+            <div class="word-edit-form">
+                <div class="form-group">
+                    <input type="text" id="edit-word-${id}" value="${this.escapeHtml(word.word)}" placeholder="Word">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="edit-definition-${id}" value="${this.escapeHtml(word.definition || '')}" placeholder="Definition (optional)">
+                </div>
+            </div>
+            <div class="word-actions">
+                <button class="save-btn" onclick="flashcards.saveEditWord(${id})" title="Save">✓</button>
+                <button class="cancel-btn" onclick="flashcards.cancelEditWord(${id})" title="Cancel">✕</button>
+            </div>
+        `;
+    }
+
+    saveEditWord(id) {
+        const newWord = document.getElementById(`edit-word-${id}`).value.trim();
+        const newDefinition = document.getElementById(`edit-definition-${id}`).value.trim();
+        
+        if (!newWord) {
+            alert('Word cannot be empty');
+            return;
+        }
+
+        const wordIndex = this.words.findIndex(w => w.id === id);
+        if (wordIndex !== -1) {
+            this.words[wordIndex].word = newWord;
+            this.words[wordIndex].definition = newDefinition;
+            this.saveCurrentSet();
+            this.updateUI();
+            this.showNotification('Word updated successfully');
+        }
+    }
+
+    cancelEditWord(id) {
+        this.updateUI();
+    }
+
     clearAllWords() {
         this.words = [];
         this.saveCurrentSet();
@@ -373,10 +417,15 @@ other`;
         }
 
         container.innerHTML = this.words.map(word => `
-            <div class="word-item">
-                <h3>${this.escapeHtml(word.word)}</h3>
-                ${word.definition ? `<p>${this.escapeHtml(word.definition)}</p>` : ''}
-                <button class="delete-btn" onclick="flashcards.deleteWord(${word.id})" title="Delete word">×</button>
+            <div class="word-item" data-id="${word.id}">
+                <div class="word-content">
+                    <h3>${this.escapeHtml(word.word)}</h3>
+                    ${word.definition ? `<p>${this.escapeHtml(word.definition)}</p>` : ''}
+                </div>
+                <div class="word-actions">
+                    <button class="edit-btn" onclick="flashcards.startEditWord(${word.id})" title="Edit word">✏️</button>
+                    <button class="delete-btn" onclick="flashcards.deleteWord(${word.id})" title="Delete word">×</button>
+                </div>
             </div>
         `).join('');
     }
