@@ -153,18 +153,13 @@ class VocabularyFlashcards {
         });
 
         // Touch/click on flashcard to go to next word
-        let lastClickTime = 0;
         document.getElementById('flashcard').addEventListener('click', () => {
-            const currentTime = Date.now();
-            const timeDiff = currentTime - lastClickTime;
-            
-            if (timeDiff < 300) { // Double click (less than 300ms between clicks)
-                this.exitPresentation();
-            } else {
-                this.nextWord();
-            }
-            
-            lastClickTime = currentTime;
+            this.nextWord();
+        });
+
+        // Exit button
+        document.getElementById('exitBtn').addEventListener('click', () => {
+            this.exitPresentation();
         });
 
         // Keyboard navigation
@@ -201,13 +196,9 @@ class VocabularyFlashcards {
 
         const handleSwipe = (duration) => {
             const swipeThreshold = 50;
-            const longPressThreshold = 500; // 500ms for long press
             const diff = touchStartX - touchEndX;
             
-            if (duration > longPressThreshold) {
-                // Long press - exit presentation
-                this.exitPresentation();
-            } else if (Math.abs(diff) > swipeThreshold) {
+            if (Math.abs(diff) > swipeThreshold) {
                 // Any swipe - next word
                 this.nextWord();
             }
