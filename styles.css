@@ -403,7 +403,7 @@ textarea {
 
 .word-display {
     text-align: center;
-    font-size: 6rem;
+    font-size: 8rem;
     font-weight: bold;
     color: #2d3748;
     line-height: 1.4;
@@ -438,7 +438,7 @@ textarea {
     }
     
     .word-display {
-        font-size: 4.5rem;
+        font-size: 6rem;
     }
     
     .pronounce-btn {
@@ -473,7 +473,7 @@ textarea {
     }
     
     .word-display {
-        font-size: 3.5rem;
+        font-size: 5rem;
     }
     
     .pronounce-btn {
