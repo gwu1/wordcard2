@@ -23,6 +23,12 @@
                     <button id="newSetBtn" class="btn btn-secondary">+ New Set</button>
                     <button id="deleteSetBtn" class="btn btn-danger">Delete Set</button>
                 </div>
+                
+                <div class="presentation-section">
+                    <button id="startPresentation" class="btn btn-large btn-success" disabled>
+                        🎯 Start Presentation Mode
+                    </button>
+                </div>
             </header>
             
             <main>
@@ -69,12 +75,6 @@
                         <!-- Words will be displayed here -->
                     </div>
                 </section>
-                
-                <section class="action-section">
-                    <button id="startPresentation" class="btn btn-large btn-success" disabled>
-                        🎯 Start Presentation Mode
-                    </button>
-                </section>
             </main>
         </div>
     </div>
@@ -83,13 +83,14 @@
     <div id="presentationMode" class="mode hidden">
         <div class="flashcard-container">
             <button id="exitBtn" class="exit-btn" title="Exit presentation">✕</button>
+            <button id="pronounceBtn" class="pronounce-btn" title="Pronounce word">🔊</button>
             <div class="flashcard" id="flashcard">
                 <div class="word-display" id="wordDisplay">
                     <!-- Current word will be displayed here -->
                 </div>
             </div>
             
-            <div class="exit-hint">Tap/swipe for next word • Top-right ✕ to exit</div>
+            <div class="exit-hint">Tap/swipe for next word • Top-right ✕ to exit • 🔊 to pronounce</div>
         </div>
     </div>
     

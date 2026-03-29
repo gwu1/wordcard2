@@ -179,6 +179,11 @@ class VocabularyFlashcards {
             this.exitPresentation();
         });
 
+        // Pronunciation button
+        document.getElementById('pronounceBtn').addEventListener('click', () => {
+            this.pronounceCurrentWord();
+        });
+
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (document.getElementById('presentationMode').classList.contains('hidden')) return;
@@ -188,6 +193,10 @@ class VocabularyFlashcards {
                 case ' ':
                     e.preventDefault();
                     this.nextWord();
+                    break;
+                case 'p':
+                case 'P':
+                    this.pronounceCurrentWord();
                     break;
                 case 'Escape':
                     this.exitPresentation();
@@ -415,6 +424,26 @@ other`;
         const wordDisplay = document.getElementById('wordDisplay');
         
         wordDisplay.textContent = currentWord.word;
+    }
+
+    pronounceCurrentWord() {
+        if (this.words.length === 0) return;
+        
+        const currentWord = this.words[this.currentIndex].word;
+        
+        // Use Web Speech API for pronunciation
+        if ('speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(currentWord);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.8;
+            utterance.pitch = 1;
+            
+            speechSynthesis.cancel(); // Cancel any ongoing speech
+            speechSynthesis.speak(utterance);
+        } else {
+            // Fallback for browsers that don't support speech synthesis
+            this.showNotification('Speech synthesis not supported in this browser');
+        }
     }
 
     nextWord() {
