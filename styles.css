@@ -409,7 +409,6 @@ textarea {
     line-height: 1.0;
     word-wrap: break-word;
     word-break: break-word;
-    hyphens: auto;
     padding: 20px;
     max-width: 100%;
     box-sizing: border-box;
@@ -443,7 +442,7 @@ textarea {
     }
     
     .word-display {
-        font-size: 9rem;
+        font-size: 8rem;
         line-height: 0.9;
         padding: 15px;
     }
