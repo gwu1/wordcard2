@@ -342,13 +342,6 @@ class VocabularyFlashcards {
         if (this.words.length === 0) return;
         
         this.currentIndex = (this.currentIndex + 1) % this.words.length;
-        
-        // If we've looped back to the beginning, exit presentation
-        if (this.currentIndex === 0) {
-            this.exitPresentation();
-            return;
-        }
-        
         this.updateFlashcard();
     }
 
