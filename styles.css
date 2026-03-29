@@ -391,7 +391,7 @@ textarea {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 60px;
+    padding: 40px 20px;
     cursor: pointer;
     transition: transform 0.3s ease;
     position: relative;
@@ -409,7 +409,7 @@ textarea {
     line-height: 1.0;
     word-wrap: break-word;
     word-break: break-word;
-    padding: 10px 5px;
+    padding: 10px 0;
     max-width: 100%;
     box-sizing: border-box;
 }
@@ -444,7 +444,7 @@ textarea {
     .word-display {
         font-size: 8rem;
         line-height: 0.9;
-        padding: 10px 5px;
+        padding: 10px 0;
     }
     
     .pronounce-btn {
@@ -481,7 +481,7 @@ textarea {
     .word-display {
         font-size: 7rem;
         line-height: 0.9;
-        padding: 10px 5px;
+        padding: 10px 0;
     }
     
     .pronounce-btn {
@@ -490,7 +490,7 @@ textarea {
     
     .flashcard {
         min-height: 400px;
-        padding: 40px;
+        padding: 30px 15px;
     }
 }
 
