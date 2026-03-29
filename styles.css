@@ -409,7 +409,7 @@ textarea {
     line-height: 1.0;
     word-wrap: break-word;
     word-break: break-word;
-    padding: 20px;
+    padding: 10px 5px;
     max-width: 100%;
     box-sizing: border-box;
 }
@@ -444,7 +444,7 @@ textarea {
     .word-display {
         font-size: 8rem;
         line-height: 0.9;
-        padding: 15px;
+        padding: 10px 5px;
     }
     
     .pronounce-btn {
@@ -481,7 +481,7 @@ textarea {
     .word-display {
         font-size: 7rem;
         line-height: 0.9;
-        padding: 15px;
+        padding: 10px 5px;
     }
     
     .pronounce-btn {
