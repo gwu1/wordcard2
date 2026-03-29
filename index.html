@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Flashcards</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Menu Mode -->
+    <div id="menuMode" class="mode">
+        <div class="container">
+            <header>
+                <h1>📚 Vocabulary Flashcards</h1>
+                <p>Add words and definitions to create flashcards for learning</p>
+                
+                <div class="set-selector">
+                    <label for="setSelect">Word Set:</label>
+                    <select id="setSelect">
+                        <option value="default">Default Set</option>
+                    </select>
+                    <button id="newSetBtn" class="btn btn-secondary">+ New Set</button>
+                    <button id="deleteSetBtn" class="btn btn-danger">Delete Set</button>
+                </div>
+            </header>
+            
+            <main>
+                <section class="input-section">
+                    <h2>Add New Word</h2>
+                    <form id="wordForm">
+                        <div class="form-group">
+                            <label for="word">Word:</label>
+                            <input type="text" id="word" required placeholder="Enter the word">
+                        </div>
+                        <div class="form-group">
+                            <label for="definition">Definition:</label>
+                            <textarea id="definition" placeholder="Enter the definition or meaning (optional)"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Word</button>
+                    </form>
+                </section>
+                
+                <section class="words-section">
+                    <div class="section-header">
+                        <h2>Word List</h2>
+                        <div class="stats">
+                            <span id="wordCount">0 words</span>
+                            <button id="clearAll" class="btn btn-danger">Clear All</button>
+                        </div>
+                    </div>
+                    <div id="wordsList" class="words-list">
+                        <!-- Words will be displayed here -->
+                    </div>
+                </section>
+                
+                <section class="action-section">
+                    <button id="startPresentation" class="btn btn-large btn-success" disabled>
+                        🎯 Start Presentation Mode
+                    </button>
+                </section>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Presentation Mode -->
+    <div id="presentationMode" class="mode hidden">
+        <div class="flashcard-container">
+            <div class="flashcard" id="flashcard">
+                <div class="word-display" id="wordDisplay">
+                    <!-- Current word will be displayed here -->
+                </div>
+            </div>
+            
+            <div class="exit-hint">Tap/swipe for next word • Double-click or long press to exit</div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
