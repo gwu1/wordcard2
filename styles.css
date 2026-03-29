@@ -295,6 +295,21 @@ textarea {
     z-index: 1000;
 }
 
+/* iOS-specific fixes */
+.flashcard {
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.exit-btn {
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
 .exit-btn:hover {
     background: rgba(255,255,255,0.2);
     transform: scale(1.1);

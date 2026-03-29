@@ -157,6 +157,13 @@ class VocabularyFlashcards {
             this.nextWord();
         });
 
+        // Prevent iOS double-tap zoom and ensure single tap behavior
+        document.getElementById('flashcard').addEventListener('touchend', (e) => {
+            // Prevent default iOS behaviors
+            e.preventDefault();
+            this.nextWord();
+        });
+
         // Exit button
         document.getElementById('exitBtn').addEventListener('click', () => {
             this.exitPresentation();

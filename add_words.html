@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Words</title>
+</head>
+<body>
+    <h1>Adding words...</h1>
+    <div id="status"></div>
+    
+    <script>
+        const wordsToAdd = [
+            'lesson',
+            'boring', 
+            'elephant',
+            'frightened',
+            'truck',
+            'dream',
+            'Dragon Boat Festival',
+            'new',
+            'answer',
+            'wrong',
+            'gun',
+            'desserts',
+            'share',
+            'quiet',
+            'slow',
+            'together',
+            'graphes',
+            'kind',
+            'kids',
+            'started',
+            'huge',
+            'other'
+        ];
+
+        // Load existing word sets
+        let wordSets = localStorage.getItem('vocabularyWordSets');
+        if (wordSets) {
+            wordSets = JSON.parse(wordSets);
+        } else {
+            wordSets = {
+                'default': {
+                    name: 'Default Set',
+                    words: [],
+                    createdAt: new Date().toISOString()
+                }
+            };
+        }
+
+        // Add words to default set
+        wordsToAdd.forEach(word => {
+            const newWord = {
+                id: Date.now() + Math.random(),
+                word: word,
+                definition: '',
+                createdAt: new Date().toISOString()
+            };
+            wordSets.default.words.push(newWord);
+        });
+
+        // Save back to localStorage
+        localStorage.setItem('vocabularyWordSets', JSON.stringify(wordSets));
+
+        document.getElementById('status').innerHTML = `
+            <p>✅ Added ${wordsToAdd.length} words to default set</p>
+            <p>Words: ${wordsToAdd.join(', ')}</p>
+            <p>You can now close this tab and open the main flashcard app.</p>
+        `;
+    </script>
+</body>
+</html>
