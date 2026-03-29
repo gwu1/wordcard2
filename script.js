@@ -140,6 +140,16 @@ class VocabularyFlashcards {
             this.addWord();
         });
 
+        // Import words
+        document.getElementById('importBtn').addEventListener('click', () => {
+            this.importWords();
+        });
+
+        // Example checkbox
+        document.getElementById('useExample').addEventListener('change', (e) => {
+            this.toggleExampleList(e.target.checked);
+        });
+
         // Clear all words
         document.getElementById('clearAll').addEventListener('click', () => {
             if (confirm('Are you sure you want to delete all words?')) {
@@ -245,6 +255,77 @@ class VocabularyFlashcards {
 
         // Show success feedback
         this.showNotification('Word added successfully!');
+    }
+
+    importWords() {
+        const bulkWordsTextarea = document.getElementById('bulkWords');
+        const wordsText = bulkWordsTextarea.value.trim();
+        
+        if (!wordsText) {
+            alert('Please enter words to import');
+            return;
+        }
+
+        const words = wordsText.split('\n')
+            .map(word => word.trim())
+            .filter(word => word.length > 0);
+
+        if (words.length === 0) {
+            alert('No valid words found');
+            return;
+        }
+
+        let addedCount = 0;
+        words.forEach(word => {
+            const newWord = {
+                id: Date.now() + Math.random(),
+                word: word,
+                definition: '',
+                createdAt: new Date().toISOString()
+            };
+            this.words.push(newWord);
+            addedCount++;
+        });
+
+        this.saveCurrentSet();
+        this.updateUI();
+
+        // Clear the textarea
+        bulkWordsTextarea.value = '';
+
+        this.showNotification(`${addedCount} words imported successfully!`);
+    }
+
+    toggleExampleList(useExample) {
+        const bulkWordsTextarea = document.getElementById('bulkWords');
+        const exampleWords = `lesson
+boring
+elephant
+frightened
+truck
+dream
+Dragon Boat Festival
+new
+answer
+wrong
+gun
+desserts
+share
+quiet
+slow
+together
+graphes
+kind
+kids
+started
+huge
+other`;
+        
+        if (useExample) {
+            bulkWordsTextarea.value = exampleWords;
+        } else {
+            bulkWordsTextarea.value = '';
+        }
     }
 
     deleteWord(id) {
